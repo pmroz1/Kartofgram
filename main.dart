@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:kartofgram/Pages/HomePage.dart';
 import 'package:kartofgram/Pages/NotificationsPage.dart';
 import 'package:kartofgram/Pages/ProfilePage.dart';
-import 'package:flutter/services.dart';
+import 'Pages/SearchPage.dart';
+//import 'package:flutter/services.dart';
 
 void main() => runApp(
       MaterialApp(
         title: "Kartofgram",
         theme: ThemeData(primarySwatch: Colors.blue),
+        debugShowCheckedModeBanner: false,
         home: App(),
-        
+
         //color: Colors.black,
       ),
     );
@@ -17,6 +20,7 @@ void main() => runApp(
 class App extends StatelessWidget {
   final List<Widget> myPages = [
     HomePage(),
+    SearchPage(),
     NotificationsPage(),
     ProfilePage(),
   ];
@@ -25,7 +29,7 @@ class App extends StatelessWidget {
     //SystemChrome.setEnabledSystemUIOverlays ([SystemUiOverlay.top]);
     return DefaultTabController(
         initialIndex: 0,
-        length: 3,
+        length: 4,
         child: Scaffold(
             resizeToAvoidBottomPadding: false,
             body: TabBarView(
@@ -36,14 +40,17 @@ class App extends StatelessWidget {
               color: Colors.black87,
               child: new TabBar(tabs: [
                 Tab(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Feather.home),
                 ),
                 Tab(
-                  icon: Icon(Icons.account_circle),
+                  icon: Icon(Feather.search),
                 ),
                 Tab(
-                  icon: Icon(Icons.notifications),
-                )
+                  icon: Icon(Feather.message_square),
+                ),
+                Tab(
+                  icon: Icon(Feather.user),
+                ),
               ]),
             )));
   }
